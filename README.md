@@ -1,4 +1,4 @@
-# Therapy-Device
+# Theraphy-Device
 
 <h1 align="center"> <img src="https://github.com/upc-pre-202302-IoTheraphy-SI572-SW71/Therapy-Device/blob/main/assets/Therapy-Device.PNG?raw=true" alt="Theraphy Device" height="350"> </h1>
 
