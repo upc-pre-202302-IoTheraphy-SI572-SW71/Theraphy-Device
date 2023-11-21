@@ -3,41 +3,40 @@
   "author": "Anonymous maker",
   "editor": "wokwi",
   "parts": [
-    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0.6, "left": -0.6, "attrs": {} },
     {
-      "type": "wokwi-led",
-      "id": "led1",
-      "top": 255.6,
-      "left": 176.6,
-      "attrs": { "color": "red" }
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 113.54,
+      "left": -169.1,
+      "rotate": 90,
+      "attrs": {}
     },
-    {
-      "type": "wokwi-resistor",
-      "id": "r1",
-      "top": 291.95,
-      "left": 96,
-      "attrs": { "value": "1000" }
-    },
-    {
-      "type": "board-ssd1306",
-      "id": "oled1",
-      "top": 223.94,
-      "left": 288.23,
-      "attrs": { "i2cAddress": "0x3c" }
-    },
-    { "type": "wokwi-pir-motion-sensor", "id": "pir1", "top": 205.6, "left": -74.58, "attrs": {} }
+    { "type": "wokwi-dht22", "id": "dht1", "top": 9.9, "left": 33, "attrs": { "humidity": "57" } },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": 37.1, "left": -432.2, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot2", "top": 133.1, "left": -432.2, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot3", "top": 219.5, "left": -432.2, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot4", "top": 325.1, "left": -432.2, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot5", "top": 421.1, "left": -432.2, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot6", "top": -58.9, "left": -432.2, "attrs": {} }
   ],
   "connections": [
-    [ "uno:A1", "led1:A", "red", [ "v0" ] ],
-    [ "led1:C", "r1:2", "black", [ "v0", "h-38" ] ],
-    [ "r1:1", "uno:GND.2", "black", [ "v-48", "h101.7" ] ],
-    [ "oled1:SDA", "uno:A4", "green", [ "v0" ] ],
-    [ "oled1:SCL", "uno:A5", "yellow", [ "v-28.8", "h-90.4" ] ],
-    [ "oled1:VCC", "uno:5V", "red", [ "v-19.2", "h-176.45" ] ],
-    [ "oled1:GND", "uno:GND.3", "black", [ "v-9.6", "h-148" ] ],
-    [ "pir1:GND", "uno:GND.3", "black", [ "h95.74", "v-105.5" ] ],
-    [ "pir1:OUT", "uno:3.3V", "red", [ "v-76.8", "h178.06" ] ],
-    [ "pir1:VCC", "uno:A0", "green", [ "v-28.8", "h245.8" ] ]
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "pot6:SIG", "esp:4", "green", [ "h66.8", "v192", "h67.2", "v86.4" ] ],
+    [ "pot1:SIG", "esp:4", "green", [ "h66.8", "v96", "h67.2", "v86.4" ] ],
+    [ "pot2:SIG", "esp:4", "green", [ "h66.8", "v86.4" ] ],
+    [ "pot3:SIG", "esp:4", "green", [ "h66.8", "v86.4" ] ],
+    [ "pot4:SIG", "esp:35", "green", [ "h66.8", "v-105.6" ] ],
+    [ "pot5:SIG", "esp:4", "green", [ "h66.8", "v-201.6" ] ],
+    [ "pot6:SIG", "esp:34", "black", [ "h134", "v163.2", "h182.4" ] ],
+    [ "pot2:SIG", "esp:34", "black", [ "h134", "v-28.8", "h182.4" ] ],
+    [ "pot3:SIG", "esp:34", "black", [ "h134", "v-115.2", "h182.4" ] ],
+    [ "pot4:SIG", "esp:34", "black", [ "h134", "v-220.8", "h182.4" ] ],
+    [ "pot1:SIG", "esp:34", "black", [ "h134", "v67.2", "h182.4" ] ],
+    [ "pot5:SIG", "esp:34", "black", [ "h134", "v-316.8", "h182.4" ] ],
+    [ "dht1:GND", "esp:GND.2", "black", [ "v0" ] ],
+    [ "dht1:VCC", "esp:5V", "red", [ "v28.8", "h-259.2" ] ],
+    [ "dht1:SDA", "esp:16", "green", [ "v0" ] ]
   ],
   "dependencies": {}
 }
